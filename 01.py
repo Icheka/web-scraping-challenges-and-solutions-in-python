@@ -1,7 +1,6 @@
 from urllib.request import urlopen
 from urllib.error import URLError
 from urllib.error import HTTPError
-import bs4 as bsoup
 
 '''
 01: Write a program to test if a given page is found or not on the server
@@ -13,9 +12,9 @@ class Scraper:
         try:
             urlopen(url)
             return 0
-        except URLError as e:
+        except URLError:
             return 1
-        except HTTPError as e:
+        except HTTPError:
             return 2
 
 def main():
@@ -28,6 +27,6 @@ def main():
     elif doesPageExistCode == 1:
         print("Remote server not found")
     elif doesPageExistCode == 2:
-        print("HTTP error")
+        print("The request returned an HTTP error")
 
 main()
